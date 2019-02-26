@@ -1,0 +1,91 @@
+# Set keyboard
+loadkeys uk
+
+# Set time
+timedatectl set-ntp true
+
+# Partition the drive
+fdisk -l
+fdisk /dev/sda
+
+# Delete all existing partitions
+d
+
+# Create EFI partition
+n
+1
+default first sector
++300M
+t
+1
+w
+
+# Create filesystem for root
+n
+2
+default first sector
+default last sector
+w
+
+# Format EFI partition
+mkfs.fat -F32 /dev/sda1
+
+# Format root partition
+mkfs.ext4 /dev/sda2
+
+# Mount
+mount /dev/sda2 /mnt
+
+# Install base system 
+pacstrap -i /mnt base base-devel
+
+# Generate fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab
+
+# Chroot
+arch-chroot /mnt
+
+# Set timezone
+ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+hwclock --systohc
+
+# Install some essential packages
+pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux linux-headers intel-ucode iucode-tool
+
+# Set locale
+nano /etc/locale.gen
+enable en_US.UTF-8 UTF-8
+locale-gen
+
+# Enable SSH
+nano /etc/ssh/sshd_config
+Look for PermitRootLogin and uncomment and set to yes:
+PermitRootLogin yes
+systemctl enable sshd
+
+# Set root password
+passwd
+
+# Set EFI
+mkdir /boot/EFI
+mount /dev/sda1 /boot/EFI
+
+# Install GRUB
+grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# Create SWAP file
+fallocate -l 4G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
+
+# Exit chroot
+exit
+
+# Unmount
+umount -a
+
+#Reboot
+reboot

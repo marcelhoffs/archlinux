@@ -1,0 +1,32 @@
+# Create new user
+useradd -m -g users -s /bin/bash marcel
+passwd marcel
+
+#Add to sudoers file
+usermod -aG wheel marcel
+visudo
+uncomment the part that allows users of the wheel group to use sudo
+
+# Enable DHCP
+systemctl enable dhcpcd.service
+systemctl start dhcpcd.service
+
+# Install Xorg
+pacman -S xorg-server xorg-xinit xorg-apps
+
+# Install graphics driver
+pacman -S mesa xf86-video-vesa
+
+# Install display manager
+pacman -S gdm
+
+# Install GNOME
+pacman -S gnome gnome-tweak-tool networkmanager bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme chrome-gnome-shell
+
+# Enable services
+systemctl enable gdm.service
+systemctl enable NetworkManager.service
+systemctl enable bluetooth.service
+
+# Reboot
+reboot
