@@ -39,12 +39,25 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # Chroot
 arch-chroot /mnt
 
+# Set hostname
+echo 'archlinux' > /etc/hostname
+
+# Update hosts file
+nano /etc/hosts
+
+127.0.0.1	localhost
+::1		    localhost
+127.0.1.1	archlinux.localdomain	archlinux
+
 # Set timezone
 ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 hwclock --systohc
 
 # Install kernel, firmware, bootloader and some essential packages
-pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts-headers linux-lts intel-ucode iucode-tool
+pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts-headers linux-lts intel-ucode iucode-tool reflector
+
+# Select fastest mirror
+reflector --country Belgium --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 
 # Set locale
 nano /etc/locale.gen
