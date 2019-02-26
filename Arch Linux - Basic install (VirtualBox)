@@ -45,6 +45,9 @@ arch-chroot /mnt
 # Set hostname
 echo 'archlinux' > /etc/hostname
 
+# Persist keyboard settings
+echo 'KEYMAP=uk' > /etc/vconsole.conf
+
 # Update hosts file
 nano /etc/hosts
 

@@ -21,13 +21,13 @@ systemctl start dhcpcd.service
 pacman -S xorg-server xorg-xinit xorg-apps
 
 # Install graphics driver
-pacman -S mesa xf86-video-vesa
+pacman -S mesa xf86-video-vesa xf86-video-vmware xf86-video-fbdev
 
 # Install display manager
 pacman -S sddm
 
 # Install KDE
-pacman -S plasma-desktop plasma-wayland-session samba bluez bluez-utils firefox ttf-roboto
+pacman -S plasma-meta plasma-wayland-session xterm samba bluez bluez-utils firefox ttf-roboto xterm
 
 # Enable services
 systemctl enable sddm.service
