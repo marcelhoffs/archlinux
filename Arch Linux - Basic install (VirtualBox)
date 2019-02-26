@@ -21,6 +21,7 @@ d
 
 # Create filesystem for root
 n
+p
 1
 default first sector
 default last sector
@@ -77,7 +78,7 @@ systemctl enable sshd
 passwd
 
 # Install GRUB
-grub-install --target=i386-pc
+grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # Create SWAP file
