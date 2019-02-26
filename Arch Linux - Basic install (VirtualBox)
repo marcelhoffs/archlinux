@@ -1,7 +1,9 @@
 # ===============================================================
 # Basic installation of Arch Linux on VirtualBox
 # ----------------------------------------------
-# Marcel Hoffs, 26/02/2019# 
+# Marcel Hoffs, 26/02/2019#
+#
+# Make sure the virtual machine has an internet connection
 # ===============================================================
 
 # Set keyboard layout (if not US international)

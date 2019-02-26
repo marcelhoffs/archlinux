@@ -1,7 +1,9 @@
 # ===============================================================
-# Basic installation of Arch Linux on VirtualBox
-# ----------------------------------------------
+# Basic installation of Arch Linux (UEFI)
+# ---------------------------------------
 # Marcel Hoffs, 26/02/2019# 
+#
+# Connect the machine via ethernet to the internet
 # ===============================================================
 
 # Set keyboard layout (if not US international)
