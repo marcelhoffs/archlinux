@@ -29,7 +29,5 @@ pacman -S sddm
 # Install KDE
 pacman -S plasma-desktop plasma-wayland-session 
 
-# Enable services
-
 # Reboot
 reboot
