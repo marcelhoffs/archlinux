@@ -1,4 +1,10 @@
-# Set keyboard
+# ===============================================================
+# Basic installation of Arch Linux on VirtualBox
+# ----------------------------------------------
+# Marcel Hoffs, 26/02/2019# 
+# ===============================================================
+
+# Set keyboard layout (if not US international)
 loadkeys uk
 
 # Set time
@@ -27,22 +33,23 @@ mount /dev/sda1 /mnt
 # Install base system 
 pacstrap -i /mnt base base-devel
 
-# Generate fstab
+# Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # Chroot
 arch-chroot /mnt
 
 # Set timezone
-ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 hwclock --systohc
 
-# Install some essential packages
-pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-headers linux intel-ucode iucode-tool
+# Install kernel, firmware, bootloader and some essential packages
+pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts-headers linux-lts intel-ucode iucode-tool
 
 # Set locale
 nano /etc/locale.gen
 enable en_US.UTF-8 UTF-8
+enable nl_NL.UTF-8 UTF-8
 locale-gen
 
 # Enable SSH

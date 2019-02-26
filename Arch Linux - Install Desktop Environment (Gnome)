@@ -1,8 +1,14 @@
+# ===============================================================
+# Basic installation of Gnome desktop environment
+# -----------------------------------------------
+# Marcel Hoffs, 26/02/2019# 
+# ===============================================================
+
 # Create new user
 useradd -m -g users -s /bin/bash marcel
 passwd marcel
 
-#Add to sudoers file
+# Add to sudoers file
 usermod -aG wheel marcel
 visudo
 uncomment the part that allows users of the wheel group to use sudo
@@ -20,7 +26,7 @@ pacman -S mesa xf86-video-vesa
 # Install display manager
 pacman -S gdm
 
-# Install GNOME
+# Install Gnome, Network Manager, bluetooth, Firefox and some themes
 pacman -S gnome gnome-tweak-tool networkmanager bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme chrome-gnome-shell
 
 # Enable services
