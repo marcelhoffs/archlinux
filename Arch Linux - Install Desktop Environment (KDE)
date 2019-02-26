@@ -27,7 +27,10 @@ pacman -S mesa xf86-video-vesa
 pacman -S sddm
 
 # Install KDE
-pacman -S plasma-desktop plasma-wayland-session 
+pacman -S plasma-desktop plasma-wayland-session samba bluez bluez-utils firefox ttf-roboto
+
+# Enable services
+systemctl enable sddm.service
 
 # Reboot
 reboot
