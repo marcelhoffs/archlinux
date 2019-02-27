@@ -29,6 +29,9 @@ pacman -S sddm
 # Install KDE
 pacman -S plasma-meta plasma-wayland-session samba firefox ttf-roboto konsole dolphin
 
+# Install extra packages
+pacman -S virtualbox-guest-utils adapta-kde arc-kde papirus-icon-theme
+
 # Enable services
 systemctl enable sddm.service
 
