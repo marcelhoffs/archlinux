@@ -59,6 +59,9 @@ echo 'archlinux' > /etc/hostname
 # Persist keyboard settings
 echo 'KEYMAP=uk' > /etc/vconsole.conf
 
+# Install vi nano
+pacman -S vi nano
+
 # Update hosts file
 nano /etc/hosts
 
@@ -71,7 +74,7 @@ ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 hwclock --systohc
 
 # Install kernel, firmware, bootloader and some essential packages
-pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts linux-lts-headers intel-ucode iucode-tool reflector
+pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts linux-lts-headers intel-ucode iucode-tool reflector dhcpcd wpa_supplicant
 
 # Select fastest mirror
 reflector --country Belgium --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
