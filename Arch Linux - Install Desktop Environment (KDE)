@@ -21,7 +21,7 @@ systemctl start dhcpcd.service
 pacman -S xorg-server xorg-xinit xorg-apps
 
 # Install graphics driver
-pacman -S mesa xf86-video-vesa xf86-video-vmware xf86-video-fbdev
+pacman -S mesa xf86-video-vesa xf86-video-vmware xf86-video-fbdev vulkan-intel
 
 # Install display manager
 pacman -S sddm
