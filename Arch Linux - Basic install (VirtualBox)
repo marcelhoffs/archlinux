@@ -34,7 +34,7 @@ mkfs.ext4 /dev/sda1
 mount /dev/sda1 /mnt
 
 # Install base system 
-pacstrap -i /mnt base base-devel
+pacstrap -i /mnt base base-devel nano vi
 
 # Generate fstab file
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -60,7 +60,7 @@ ln -sf /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 hwclock --systohc
 
 # Install kernel, firmware, bootloader and some essential packages
-pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts-headers linux-lts intel-ucode iucode-tool reflector
+pacman -S grub efibootmgr dosfstools openssh os-prober mtools linux-lts-headers linux-lts intel-ucode iucode-tool reflector linux-firmware wpa_supplicant dhcpcd
 
 # Select fastest mirror
 reflector --country Belgium --country Netherlands --country Germany --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
