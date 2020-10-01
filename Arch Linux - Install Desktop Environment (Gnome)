@@ -27,7 +27,7 @@ pacman -S mesa xf86-video-vesa vulkan-intel
 pacman -S gdm
 
 # Install Gnome, Network Manager, bluetooth, Firefox and some themes
-pacman -S gnome gnome-tweak-tool networkmanager bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme chrome-gnome-shell samba git curl base-devel
+pacman -S gnome gnome-tweak-tool networkmanager bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme chrome-gnome-shell samba git curl base-devel ttf-fira-sans ttf-fira-mono ttf-fira-code
 
 # Enable services
 systemctl enable gdm.service
