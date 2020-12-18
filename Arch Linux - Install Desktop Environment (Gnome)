@@ -4,7 +4,7 @@
 # Marcel Hoffs, 26/02/2019
 # ===============================================================
 
-# Create new user
+# Create a new user
 useradd -m -g users -s /bin/bash marcel
 passwd marcel
 
