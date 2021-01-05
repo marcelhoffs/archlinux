@@ -6,7 +6,7 @@
 # Connect the machine via ethernet to the internet
 # =============================================================
 
-# Set keyboard layout (if not US international)
+# Set keyboard layout (optional, if not US international)
 loadkeys uk
 
 # Set time
