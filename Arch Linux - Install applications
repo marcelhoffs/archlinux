@@ -1,0 +1,21 @@
+# Install Pamac package manager
+sudo pacman -Ss base-devel git curl
+mkdir /home/marcel/pamac
+cd /home/marcel/pamac
+git clone https://aur.archlinux.org/pamac-aur.git .
+makepkg -sic
+rm -rf /home/marcel/pamac
+
+# Install TigerVNC
+sudo pacman -S tigervnc
+vncpasswd
+sudo nano /etc/tigervnc/vncserver.users
+check /usr/share/xsessions/ which sessions are available
+
+create ~/.vnc/config
+
+session=mate
+geometry=1920x1080
+alwaysshared
+
+sudo systemctl start vncserver@:1

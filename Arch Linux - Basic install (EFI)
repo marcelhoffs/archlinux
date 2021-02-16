@@ -21,6 +21,7 @@ d
 
 # Create EFI partition
 n
+p
 1
 default first sector
 +300M
@@ -30,6 +31,7 @@ w
 
 # Create filesystem for root
 n
+p
 2
 default first sector
 default last sector
@@ -87,7 +89,7 @@ locale-gen
 
 # Enable SSH
 nano /etc/ssh/sshd_config
-Look for PermitRootLogin and uncomment and set to yes:
+Look for PermitRootLogin and uncomment and set to yes
 PermitRootLogin yes
 systemctl enable sshd
 
@@ -111,6 +113,7 @@ echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 
 # Enable DHCP
 systemctl enable dhcpcd.service
+systemctl start dhcpcd.service
 
 # Exit chroot
 exit
@@ -120,3 +123,15 @@ umount -a
 
 #Reboot
 reboot
+
+# Create a new user
+useradd -m -g users -s /bin/bash marcel
+passwd marcel
+
+# Add to sudoers file
+usermod -aG wheel marcel
+visudo
+uncomment the part that allows users of the wheel group to use sudo
+
+# Install some useful tools
+sudo pacman -S git curl wget htop neofetch

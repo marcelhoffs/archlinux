@@ -1,0 +1,32 @@
+# ===============================================================
+# Basic installation of MATE desktop environment
+# -----------------------------------------------
+# Marcel Hoffs, 15/02/2021
+# ===============================================================
+
+# Install Xorg
+pacman -S xorg-server xorg-xinit xorg-apps
+
+# Install graphics driver
+pacman -S mesa xf86-video-vesa xf86-video-vmware vulkan-intel
+
+# Install the MATE desktop environment
+pacman -S mate mate-extra networkmanager network-manager-applet blueman mate-power-manager
+
+# Install display manager
+pacman -S lightdm lightdm-gtk-greeter
+
+# Enable display manager
+systemctl enable lightdm
+
+# Start services
+systemctl enable NetworkManager.service
+
+# Install VirtualBox guest utilities
+pacman -S virtualbox-guest-utils
+
+# Install better themes
+pacman -S materia-gtk-theme papirus-icon-theme ttf-fira-sans ttf-fira-code ttf-fira-mono
+
+# Reboot
+reboot

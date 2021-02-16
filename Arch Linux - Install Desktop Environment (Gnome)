@@ -4,19 +4,6 @@
 # Marcel Hoffs, 26/02/2019
 # ===============================================================
 
-# Create a new user
-useradd -m -g users -s /bin/bash marcel
-passwd marcel
-
-# Add to sudoers file
-usermod -aG wheel marcel
-visudo
-uncomment the part that allows users of the wheel group to use sudo
-
-# Enable DHCP
-systemctl enable dhcpcd.service
-systemctl start dhcpcd.service
-
 # Install Xorg
 pacman -S xorg-server xorg-xinit xorg-apps
 
@@ -27,7 +14,8 @@ pacman -S mesa xf86-video-vesa vulkan-intel
 pacman -S gdm
 
 # Install Gnome, Network Manager, bluetooth, Firefox and some themes
-pacman -S gnome gnome-tweak-tool networkmanager networkmanager-openconnect bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme chrome-gnome-shell samba git curl base-devel ttf-fira-sans ttf-fira-mono ttf-fira-code
+pacman -S gnome gnome-tweak-tool networkmanager networkmanager-openconnect bluez bluez-utils gnome-bluetooth firefox ttf-roboto 
+arc-gtk-theme chrome-gnome-shell samba git curl base-devel ttf-fira-sans ttf-fira-mono ttf-fira-code
 
 # Enable services
 systemctl enable gdm.service
@@ -36,11 +24,3 @@ systemctl enable bluetooth.service
 
 # Reboot
 reboot
-
-# Install Pamac package manager
-sudo pacman -Ss base-devel git curl
-mkdir /home/marcel/pamac
-cd /home/marcel/pamac
-git clone https://aur.archlinux.org/pamac-aur.git .
-makepkg -sic
-rm -rf /home/marcel/pamac
