@@ -14,10 +14,13 @@ pacman -S mesa xf86-video-vesa xf86-video-vmware xf86-video-fbdev vulkan-intel
 pacman -S sddm
 
 # Install KDE
-pacman -S plasma-meta plasma-wayland-session samba firefox ttf-roboto konsole dolphin
+pacman -S plasma-meta plasma-wayland-session  ttf-roboto konsole dolphin
 
 # Install extra packages
-pacman -S virtualbox-guest-utils adapta-kde arc-kde papirus-icon-theme
+pacman -S samba firefox adapta-kde arc-kde papirus-icon-theme
+
+# Install VirtualBox guest utilities
+pacman -S virtualbox-guest-utils
 
 # Enable services
 systemctl enable sddm.service

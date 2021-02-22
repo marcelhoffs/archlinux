@@ -7,17 +7,22 @@
 # Install Xorg
 pacman -S xorg-server xorg-xinit xorg-apps
 
-# Install graphics driver
-pacman -S mesa xf86-video-vesa vulkan-intel
-
-# Install XFCE
-pacman -S xfce4 xfce4-goodies networkmanager bluez bluez-utils gnome-bluetooth firefox ttf-roboto arc-gtk-theme papirus-icon-theme
+# Install graphics drivers
+pacman -S mesa xf86-video-vesa xf86-video-vmware vulkan-intel
 
 # Install Light DM
 pacman -S lightdm lightdm-gtk-greeter
 
+# Install XFCE
+pacman -S xfce4 xfce4-goodies networkmanager bluez bluez-utils gnome-bluetooth 
+
+# Install fonts and themes
+pacman -S ttf-roboto ttf-fira-sans ttf-fira-mono ttf-fira-code arc-gtk-theme papirus-icon-theme
+
 # Enable services
 systemctl enable lightdm.service
+systemctl enable NetworkManager.service
+systemctl enable bluetooth.service
 
 # Reboot
 reboot

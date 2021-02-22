@@ -1,4 +1,7 @@
+# =========================================
 # Install Pamac package manager
+# =========================================
+
 sudo pacman -Ss base-devel git curl
 mkdir /home/marcel/pamac
 cd /home/marcel/pamac
@@ -6,7 +9,11 @@ git clone https://aur.archlinux.org/pamac-aur.git .
 makepkg -sic
 rm -rf /home/marcel/pamac
 
+
+# =========================================
 # Install TigerVNC
+# =========================================
+
 sudo pacman -S tigervnc
 vncpasswd
 sudo nano /etc/tigervnc/vncserver.users
