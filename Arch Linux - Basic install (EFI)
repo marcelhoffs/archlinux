@@ -47,7 +47,7 @@ mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 
 # Install base system 
-pacstrap -i /mnt base base-devel
+pacstrap -i /mnt base base-devel vi nano
 
 # Generate fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
@@ -60,9 +60,6 @@ echo 'archlinux' > /etc/hostname
 
 # Persist keyboard settings
 echo 'KEYMAP=uk' > /etc/vconsole.conf
-
-# Install vi nano
-pacman -S vi nano
 
 # Update hosts file
 nano /etc/hosts
